@@ -1,0 +1,58 @@
+/* Apply basic styling to the main container */
+.main-container {
+    -fx-background-color: #f4f4f4; /* Light gray background */
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-spacing: 20px;
+}
+
+/* Style for the input text field */
+.input-field {
+    -fx-pref-width: 400px;
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial, sans-serif";
+}
+
+/* Style for the combo box */
+.combo-box {
+    -fx-pref-width: 400px;
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px;
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial, sans-serif";
+}
+
+/* Style for the start button */
+.start-button {
+    -fx-pref-width: 150px;
+    -fx-padding: 12px 20px;
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 2);
+}
+
+/* Style for the visualization pane */
+.visualization-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 10px;
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 5, 0.0, 0, 2);
+}
+
+/* Hover effect for the button */
+.start-button:hover {
+    -fx-background-color: #2980b9;
+    -fx-cursor: hand;
+}

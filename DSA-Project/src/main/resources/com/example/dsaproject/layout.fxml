@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.Pane?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.dsaproject.Controller"
+      alignment="CENTER" spacing="10">
+    <TextField fx:id="inputArrayField" promptText="Enter numbers separated by commas"/>
+    <ComboBox fx:id="algorithmSelector" promptText="Select Algorithm"/>
+    <Button fx:id="startButton" text="Start" onAction="#startAlgorithm"/>
+    <Pane fx:id="visualizationPane" prefHeight="200" prefWidth="400" style="-fx-border-color: black;"/>
+</VBox>

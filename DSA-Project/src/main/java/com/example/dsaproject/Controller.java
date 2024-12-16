@@ -1,5 +1,6 @@
 package com.example.dsaproject;
 
+import java.util.LinkedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -32,13 +33,25 @@ public class Controller {
     @FXML
     public void startAlgorithm() {
         try {
+//            String[] input = inputArrayField.getText().split(",");
+//            System.out.println("Input: " + inputArrayField.getText());
+//            int[] array = new int[input.length];
+//            for (int i = 0; i < input.length; i++) {
+//                array[i] = Integer.parseInt(input[i].trim());
+//            }
+
+            // Step 1: Get the input from the text field and process it into a LinkedList
+            LinkedList<Integer> list = new LinkedList<>();
             String[] input = inputArrayField.getText().split(",");
             System.out.println("Input: " + inputArrayField.getText());
-            int[] array = new int[input.length];
-            for (int i = 0; i < input.length; i++) {
-                array[i] = Integer.parseInt(input[i].trim());
+            for (String num : input) {
+                list.add(Integer.parseInt(num.trim()));
             }
 
+            // Step 2: Convert the LinkedList to an array
+            int[] array = list.stream().mapToInt(i -> i).toArray();
+
+            // Step 3: Get the selected algorithm
             String selectedAlgorithm = algorithmSelector.getValue();
             System.out.println("Selected: " + selectedAlgorithm);
             if (selectedAlgorithm == null) {
@@ -64,7 +77,6 @@ public class Controller {
                     showAlert("Result", "Target found at index: " + binaryIndex);
                     return;
             }
-
             visualizeArray(array);
 
         } catch (Exception e) {

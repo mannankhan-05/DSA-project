@@ -12,6 +12,8 @@
       fx:controller="com.example.dsaproject.Controller"
       alignment="CENTER" spacing="20" styleClass="main-container">
 
+    <Button styleClass="undo-button" text="Previous State" onAction="#undoLastStep" />
+
     <TextField fx:id="inputArrayField" promptText="Enter numbers separated by commas"
                styleClass="input-field" />
 

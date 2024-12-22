@@ -1,6 +1,7 @@
 package com.example.dsaproject;
 
 import java.util.LinkedList;
+import java.util.Stack;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -19,6 +20,8 @@ public class Controller {
 
     private SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
     private SearchingAlgorithms searchingAlgorithms = new SearchingAlgorithms();
+    private LinkedList<Integer> currentList = new LinkedList<>();
+    private Stack<LinkedList<Integer>> stateStack = new Stack<>();
 
     @FXML
     private void initialize() {
@@ -34,6 +37,9 @@ public class Controller {
             for (String num : input) {
                 list.add(Integer.parseInt(num.trim()));
             }
+
+            // Save the current state before performing any algorithm
+            stateStack.push(new LinkedList<>(list));
 
             // Step 2: Get the selected algorithm
             String selectedAlgorithm = algorithmSelector.getValue();
@@ -82,6 +88,7 @@ public class Controller {
                     }
 
             }
+            currentList = list;
             visualizeList(list);
 
         } catch (Exception e) {
@@ -124,6 +131,36 @@ public class Controller {
         sortedArrayLabel.setLayoutY(visualizationPane.getHeight() + 20);  // Below the visualization
         visualizationPane.getChildren().add(sortedArrayLabel);
     }
+
+    @FXML
+    private void undoLastStep() {
+        if (!stateStack.isEmpty()) {
+            LinkedList<Integer> previousState = stateStack.pop();
+            currentList = previousState;
+
+            // Update the text field with the previous state
+            inputArrayField.setText(previousList(currentList));
+
+            visualizeList(currentList);
+        } else {
+            showAlert("Info", "No steps to undo.");
+        }
+    }
+
+    private String previousList(LinkedList<Integer> list) {
+        StringBuilder sb = new StringBuilder();
+        for (int num : list) {
+            sb.append(num).append(", ");
+        }
+
+        // Remove the last comma and space if present
+        if (sb.length() > 0) {
+            sb.setLength(sb.length() - 2);  // Remove the trailing comma and space
+        }
+
+        return sb.toString();
+    }
+
 
     // Helper method to convert the LinkedList to a string
     private String listToString(LinkedList<Integer> list) {

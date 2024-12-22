@@ -1,10 +1,7 @@
 package com.example.dsaproject;
-
 import java.util.LinkedList;
 
 public class SortingAlgorithms {
-
-    // Bubble Sort for LinkedList
     public void bubbleSort(LinkedList<Integer> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             for (int j = 0; j < list.size() - i - 1; j++) {
@@ -18,7 +15,6 @@ public class SortingAlgorithms {
         }
     }
 
-    // Quick Sort for LinkedList
     public void quickSort(LinkedList<Integer> list, int low, int high) {
         if (low < high) {
             int pi = partition(list, low, high);

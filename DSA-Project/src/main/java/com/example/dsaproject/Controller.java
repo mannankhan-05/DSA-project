@@ -1,10 +1,10 @@
 package com.example.dsaproject;
 
 import java.util.LinkedList;
+import java.util.HashSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -23,7 +23,6 @@ public class Controller {
 
     @FXML
     private void initialize() {
-        System.out.println("Initializing the controller...");
         algorithmSelector.getItems().addAll("Bubble Sort", "Quick Sort", "Linear Search", "Binary Search");
     }
 
@@ -33,7 +32,6 @@ public class Controller {
             // Step 1: Get the input from the text field and process it into a LinkedList
             LinkedList<Integer> list = new LinkedList<>();
             String[] input = inputArrayField.getText().split(",");
-            System.out.println("Input: " + inputArrayField.getText());
             for (String num : input) {
                 list.add(Integer.parseInt(num.trim()));
             }
@@ -57,15 +55,33 @@ public class Controller {
                 case "Linear Search":
                     int target = getSearchTarget();
                     int index = searchingAlgorithms.linearSearch(list, target);
-                    showAlert("Result", "Target found at index: " + index);
+                    if(index != -1) {
+                        showAlert("Result", "Target found at index: " + index);
+                    }
+                    else{
+                        showAlert("Result", "Target not found in the list");
+                    }
                     return;
                 case "Binary Search":
+                    // Check if list is sorted
+                    for (int i = 0; i < list.size() - 1; i++) {
+                        if (list.get(i) > list.get(i + 1)) {
+                            showAlert("Error", "The list is not sorted. Please sort the list before performing binary search.");
+                            return;
+                        }
+                    }
+
+                    // Proceed with binary search if the list is sorted
                     int binaryTarget = getSearchTarget();
                     int binaryIndex = searchingAlgorithms.binarySearch(list, binaryTarget);
-                    showAlert("Result", "Target found at index: " + binaryIndex);
-                    return;
+                    if (binaryIndex != -1) {
+                        showAlert("Result", "Target found at index: " + binaryIndex);
+                    } else {
+                        showAlert("Result", "Target not found in the list.");
+                    }
+
             }
-            visualizeList(list);  // Visualize the LinkedList
+            visualizeList(list);
 
         } catch (Exception e) {
             showAlert("Error", "Invalid input. Please enter numbers separated by commas.");
@@ -87,7 +103,6 @@ public class Controller {
 
         // Loop through each element in the LinkedList
         for (int i = 0; i < list.size(); i++) {
-            // Get the value from the LinkedList
             int value = list.get(i);
 
             // Create a rectangle for each element in the list

@@ -1,7 +1,16 @@
 package com.example.dsaproject;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class SortingAlgorithms {
+    public void sortByPriorityQueue(LinkedList<Integer> list) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(list);
+        list.clear();
+        while (!pq.isEmpty()) {
+            list.add(pq.poll());
+        }
+    }
+
     public void bubbleSort(LinkedList<Integer> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             for (int j = 0; j < list.size() - i - 1; j++) {

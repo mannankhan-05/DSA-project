@@ -1,7 +1,6 @@
 package com.example.dsaproject;
 
 import java.util.LinkedList;
-import java.util.HashSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -23,7 +22,7 @@ public class Controller {
 
     @FXML
     private void initialize() {
-        algorithmSelector.getItems().addAll("Bubble Sort", "Quick Sort", "Linear Search", "Binary Search");
+        algorithmSelector.getItems().addAll("Bubble Sort", "Quick Sort", "Sort Using Priority Queue", "Linear Search", "Binary Search");
     }
 
     @FXML
@@ -38,7 +37,6 @@ public class Controller {
 
             // Step 2: Get the selected algorithm
             String selectedAlgorithm = algorithmSelector.getValue();
-            System.out.println("Selected: " + selectedAlgorithm);
             if (selectedAlgorithm == null) {
                 showAlert("Error", "Please select an algorithm.");
                 return;
@@ -51,6 +49,9 @@ public class Controller {
                     break;
                 case "Quick Sort":
                     sortingAlgorithms.quickSort(list, 0, list.size() - 1);
+                    break;
+                case "Sort Using Priority Queue":
+                    sortingAlgorithms.sortByPriorityQueue(list);
                     break;
                 case "Linear Search":
                     int target = getSearchTarget();

@@ -12,16 +12,12 @@
       fx:controller="com.example.dsaproject.Controller"
       alignment="CENTER" spacing="20" styleClass="main-container">
 
-    <!-- Input Field -->
     <TextField fx:id="inputArrayField" promptText="Enter numbers separated by commas"
                styleClass="input-field" />
 
-    <!-- Algorithm Selector -->
     <ComboBox fx:id="algorithmSelector" promptText="Select Algorithm" styleClass="combo-box" />
 
-    <!-- Start Button -->
     <Button fx:id="startButton" text="Start" onAction="#startAlgorithm" styleClass="start-button" />
 
-    <!-- Visualization Pane -->
     <Pane fx:id="visualizationPane" prefHeight="300" prefWidth="500" styleClass="visualization-pane" />
 </VBox>
